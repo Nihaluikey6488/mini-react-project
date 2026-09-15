@@ -1,0 +1,36 @@
+{
+  "name": "mini-react-kodez",
+  "version": "1.0.0",
+  "description": "- folder Structure\r ```\r   README.md\r   ts.config.json\r   package.json\r   index.html\r   src/ ---> .ts\r    |----- main.ts\r    |----- component \r             |--- Button.ts\r   dist/  \r ```",
+  "main": "./dist/main.js",
+  "scripts": {
+    "dev:ts": "esbuild src/main.ts --bundle --outfile=dist/main.js --format=esm --sourcemap --watch",
+    "dev:typecheck": "tsc --noEmit --watch --preserveWatchOutput",
+    "dev:css": "npx @tailwindcss/cli -i ./src/style/input.css -o ./dist/style/output.css --watch",
+    "dev:serve": "browser-sync start --server --single --files \"dist/**/*.js,dist/**/*.css,index.html\" --no-notify --port 3000",
+    "dev": "concurrently \"npm run dev:ts\" \"npm run dev:typecheck\" \"npm run dev:css\" \"npm run dev:serve\" --names \"ESB,TSC,CSS,BS \" --prefix-colors \"cyan,blue,green,yellow\"",
+    "build": "tsc --noEmit && esbuild src/main.ts --bundle --outfile=dist/main.js --format=esm --minify && npx @tailwindcss/cli -i ./src/style/input.css -o ./dist/style/output.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nihaluikey6488/mini-react-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Nihaluikey6488/mini-react-project/issues"
+  },
+  "homepage": "https://github.com/Nihaluikey6488/mini-react-project#readme",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "concurrently": "^10.0.5",
+    "esbuild": "^0.28.2",
+    "serve": "^14.2.6"
+  }
+}
